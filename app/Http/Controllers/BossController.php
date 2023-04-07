@@ -21,6 +21,7 @@ class BossController extends Controller
     public function create()
     {
         //
+        return view('Boss.signUp');
     }
 
     /**
@@ -29,6 +30,14 @@ class BossController extends Controller
     public function store(Request $request)
     {
         //
+      //  $boss = Boss::craate($request->all());
+        $boss=  Boss::create([
+            'fname'=>$request->post('firstName'),
+            'lname'=>$request->post('lastName'),
+            'email'=>$request->post('email'),
+            'password'=>$request->post('password'),
+          ]);
+        $boss->save();
     }
 
     /**

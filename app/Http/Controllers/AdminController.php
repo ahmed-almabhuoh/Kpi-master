@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -13,6 +14,8 @@ class AdminController extends Controller
     public function index()
     {
         //
+        $entries = DB::table('admins');
+        return view('Admin.index',compact('entries'));
     }
 
     /**
@@ -21,6 +24,8 @@ class AdminController extends Controller
     public function create()
     {
         //
+       //$admin = Admin::all();
+        return view('Admin.login');
     }
 
     /**
@@ -29,6 +34,19 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         //
+
+      //  $admin = Admin::create($request->all());
+        $admin =  Admin::create([
+          'fname'=>$request->post('fname'),
+          'lname'=>$request->post('lname'),
+          'identity_no'=>$request->post('identity_no'),
+          'Phone'=>$request->post('Phone'),
+          'BOD'=>$request->post('BOD'),
+          'email'=>$request->post('email'),   
+          'password'=>$request->post('password'),
+        ]);
+        $admin->save();
+      // return redirect(route('Admin/login'));
     }
 
     /**

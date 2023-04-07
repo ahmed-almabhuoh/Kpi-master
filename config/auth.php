@@ -40,11 +40,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'boss'=>[
+            'driver' => 'session',
+            'provider' => 'bosses',
+        ],
+        'manager'=>[
+            'driver' => 'session',
+            'provider' => 'managers',
+        ]
     ],
 
     /*
@@ -75,6 +82,16 @@ return [
             'model' => App\Models\Admin::class,
         ],
 
+        
+        'bosses' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Boss::class,
+        ],
+          
+        'managers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\manager::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
