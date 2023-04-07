@@ -32,6 +32,11 @@ Route::prefix('cpanel')->middleware('guest:admin')->group(function () {
         dd('This route for testing');
     });
 
+
+    Route::get('another-test', function () {
+        dd('This is another route for testing');
+    });
+
     Route::post('login', [AuthenticationController::class, 'login'])->name('admin.login');
 });
 
